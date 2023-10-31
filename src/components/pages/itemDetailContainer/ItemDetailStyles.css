@@ -1,0 +1,29 @@
+.indumentaria, .electronica,  .farmacia, p {
+  color: #FFF;
+  font-size: 25px;
+  margin: 5px;
+}
+
+img {
+  width: 30rem;
+  border-radius: 25px;
+}
+
+.indumentaria {
+  width: 20rem;
+}
+
+.btnComprar {
+  margin: 10px 0;
+  font-size: 1rem;
+  color: #FFF;
+  width: 6rem;
+  height: 3rem;
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+.btnComprar:hover {
+  background-color: rgb(115, 181, 189);
+  color: #FFF;
+}
