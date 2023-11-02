@@ -1,6 +1,6 @@
 import { Button, IconButton } from "@mui/material";
 import { useContext } from "react";
-
+import "./Cart.css"
 import { Link } from "react-router-dom";
 import { CartContext } from "../../../context/CartContext";
 import Swal from "sweetalert2";
@@ -34,7 +34,7 @@ const Cart = () => {
       <h1>Estoy en el carrito</h1>
 
       {cart.map((product) => (
-        <div key={product.id} style={{ border: "2px solid black" }}>
+        <div key={product.id}>
           <h2>{product.title}</h2>
           <h3>{product.price}</h3>
           <h3>cantidad: {product.quantity}</h3>

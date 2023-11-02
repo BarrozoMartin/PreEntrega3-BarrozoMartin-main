@@ -106,6 +106,7 @@ export let products = [
     {
         
         title: "Notebook",
+        brand: "Asus",
         price: 1300500,
         stock: 5,
         description: "Notebook gamer",

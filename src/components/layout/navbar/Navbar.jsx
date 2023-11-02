@@ -13,16 +13,15 @@ const Navbar = () => {
 
     getDocs(categoriesCollection)
       .then((res) => {
-        let arrayCategories = []
-        res.docs.map((elemento) => {
-          if (!arrayCategories.includes(elemento.data().category)) {
-            arrayCategories.push(elemento.data().category)
+        let arrayCategories = [];
+        res.docs.forEach((elemento) => {
+          const category = elemento.data().category;
+          if (!arrayCategories.includes(category)) {
+            arrayCategories.push(category);
           }
         });
-        console.log(arrayCategories)
         setCategories(arrayCategories);
-      })
-      .catch((err) => console.log(err));
+      });
   }, []);
 
   return (
@@ -30,7 +29,7 @@ const Navbar = () => {
       <aside>
         <header>
           <Link to="/">
-            <img className="logo" src="/src/components/assets/img/buhoneroicon.png" alt="" />
+            <img className="logo" src="https://res.cloudinary.com/dob2vpzui/image/upload/v1698959935/buhoneroicon_il848d.png"/>
           </Link>
           <h2>Got some rare things on sale, stranger!</h2>
         </header>
@@ -56,4 +55,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

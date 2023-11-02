@@ -1,5 +1,5 @@
-import React from "react"
-import Cart from "/Cart.jsx"
+import React from "react";
+import Cart from "./Cart.jsx";
 
 function CartItemList() {
   return (

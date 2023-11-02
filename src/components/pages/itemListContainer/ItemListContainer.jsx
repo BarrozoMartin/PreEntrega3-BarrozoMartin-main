@@ -31,7 +31,6 @@ const ItemListContainer = () => {
         });
 
         setItems(newArray);
-        console.log("Productos cargados:", newArray);
       })
       .catch((err) => console.log(err));
   }, [categoryName]);
