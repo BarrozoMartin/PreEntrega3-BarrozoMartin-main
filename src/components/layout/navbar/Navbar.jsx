@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import "./Navbar.css";
 import { Link } from "react-router-dom";
+import "./Navbar.css";
 import { db } from "../../../firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
 
@@ -8,13 +8,18 @@ const Navbar = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    const categoriesCollection = collection(db, "categories");
+    // Obtén las categorías desde la base de datos (esto podría variar según tu aplicación)
+    const categoriesCollection = collection(db, "products");
 
     getDocs(categoriesCollection)
       .then((res) => {
-        let arrayCategories = res.docs.map((category) => {
-          return { ...category.data(), id: category.id };
+        let arrayCategories = []
+        res.docs.map((elemento) => {
+          if (!arrayCategories.includes(elemento.data().category)) {
+            arrayCategories.push(elemento.data().category)
+          }
         });
+        console.log(arrayCategories)
         setCategories(arrayCategories);
       })
       .catch((err) => console.log(err));
@@ -37,9 +42,9 @@ const Navbar = () => {
               </Link>
             </li>
             {categories.map((category) => (
-              <li key={category.id}>
-                <Link to={category.path} className="menu">
-                  {category.name}
+              <li key={category}>
+                <Link to={`/${category}`} className="menu">
+                  {category}
                 </Link>
               </li>
             ))}
@@ -51,3 +56,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

@@ -1,14 +1,16 @@
-import React from "react";
-import Navbar from "./navbar/Navbar";
 import Footer from "./footer/Footer";
-import ItemListContainer from "../pages/itemListContainer/ItemListContainer";
+import { Outlet } from "react-router-dom";
+import Navbar from "./navbar/Navbar";
 
 const Layout = () => {
   return (
     <div>
-      <Navbar />
-      <ItemListContainer />
-      <Footer />
+        <Navbar />
+
+        <Outlet />
+
+        <Footer />
+
     </div>
   );
 };

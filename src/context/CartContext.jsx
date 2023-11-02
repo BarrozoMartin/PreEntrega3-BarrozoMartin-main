@@ -37,14 +37,14 @@ const CartContextComponent = ({ children }) => {
     return product?.quantity;
   };
 
-  // limpiar el carrito
+  // para limpiar el carrito
 
   const clearCart = () => {
     setCart([]);
     localStorage.removeItem("cart")
   };
 
-  // poder borrar un elemento particular del carrito
+  // para poder borrar un elemento particular del carrito
 
   const deleteProductById = (id) => {
     let newArr = cart.filter((product) => product.id !== id);
@@ -52,7 +52,7 @@ const CartContextComponent = ({ children }) => {
     localStorage.setItem("cart", JSON.stringify( newArr ) )
   };
 
-  // obtener el total del carrito
+  // para obtener el total del carrito
 
   const getTotalPrice = () => {
     let total = cart.reduce((acc, elemento) => {
@@ -61,7 +61,7 @@ const CartContextComponent = ({ children }) => {
 
     return total;
   };
-  // obtener la cantidad de elementos
+  // paraobtener la cantidad de elementos
 
   const getTotalQuantity = () => {
     let total = cart.reduce((acc, elemento) => {

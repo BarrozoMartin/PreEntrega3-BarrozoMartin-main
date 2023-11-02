@@ -11,7 +11,7 @@ function App() {
       <BrowserRouter>
       <CartContextComponent>
           <AppRouter />
-        <CartWidget />
+          <CartWidget />
         </CartContextComponent>
       </BrowserRouter>
     </>
