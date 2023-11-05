@@ -3,27 +3,27 @@ import { createContext, useState } from "react";
 export const CartContext = createContext();
 
 const CartContextComponent = ({ children }) => {
-  const [cart, setCart] = useState( JSON.parse(localStorage.getItem("cart")) || [] ); // [todo lo que tenia, y ademas lo nuevo]
-  
+  const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")) || []);
+
   const addToCart = (product) => {
-    let exist = isInCart(product.id);
-    if (exist) {
-      let newArr = cart.map((elemento) => {
-        // []
-        if (elemento.id === product.id) {
-          return {
-            ...elemento,
-            quantity: product.quantity,
-          };
-        } else {
-          return elemento;
-        }
-      });
-      setCart(newArr);
-      localStorage.setItem("cart", JSON.stringify(newArr) )
+    if (product.quantity <= 0) {
+      return; 
+    }
+
+    const productIndex = cart.findIndex((elemento) => elemento.id === product.id);
+
+    if (productIndex !== -1) {
+    
+      const updatedCart = [...cart];
+      const existingProduct = updatedCart[productIndex];
+      existingProduct.quantity += product.quantity; 
+      setCart(updatedCart);
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
     } else {
-      setCart([...cart, product]);
-      localStorage.setItem("cart", JSON.stringify([...cart, product]) )
+
+      const updatedCart = [...cart, product];
+      setCart(updatedCart);
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
     }
   };
 
@@ -37,22 +37,16 @@ const CartContextComponent = ({ children }) => {
     return product?.quantity;
   };
 
-  // para limpiar el carrito
-
   const clearCart = () => {
     setCart([]);
-    localStorage.removeItem("cart")
+    localStorage.removeItem("cart");
   };
-
-  // para poder borrar un elemento particular del carrito
 
   const deleteProductById = (id) => {
     let newArr = cart.filter((product) => product.id !== id);
     setCart(newArr);
-    localStorage.setItem("cart", JSON.stringify( newArr ) )
+    localStorage.setItem("cart", JSON.stringify(newArr));
   };
-
-  // para obtener el total del carrito
 
   const getTotalPrice = () => {
     let total = cart.reduce((acc, elemento) => {
@@ -61,7 +55,6 @@ const CartContextComponent = ({ children }) => {
 
     return total;
   };
-  // paraobtener la cantidad de elementos
 
   const getTotalQuantity = () => {
     let total = cart.reduce((acc, elemento) => {

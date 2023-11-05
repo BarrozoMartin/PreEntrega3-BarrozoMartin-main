@@ -2,41 +2,41 @@ import React from "react";
 import { Link } from "react-router-dom";
 import CounterContainer from "../../common/counter/CounterContainer";
 import "./ItemDetailStyles.css";
+import { Button } from "@mui/material";
 
 export const ItemDetail = ({ productSelected, onAdd, initial, showCounter }) => {
+
   return (
     <section>
       <img src={productSelected.img} alt={productSelected.title} />
 
-      <div className="common-details">
+      <div>
         <h1>{productSelected.title}</h1>
         <p>Marca: {productSelected.brand}</p>
-        <p>Precio: ${productSelected.price}</p>
-        <p>Detalles: {productSelected.details}</p>
-        <div className="mrBotones">
-        <button className="btnAdd" onClick={() => onAdd(1)}>
-          Agregar al Carrito
-        </button>
+        <h1>Detalles</h1>
+        <p>{productSelected.details}</p>
+        <p>Precio AR$: {productSelected.price}</p>
+
+        <div className="itemContainer">
+          {initial && (
+            <Button variant="contained" sx={{ color: "#FFF", fontSize: 15}}>
+              Ya tienes {initial} unidades
+            </Button>
+          )}
+
+          {showCounter ? (
+            <div>
+              <CounterContainer stock={productSelected.stock} onAdd={onAdd} initial={initial} />
+            </div>
+          ) : (
+            <Link to="/cart">
+              <Button variant="contained" sx={{ color: "#FFF", fontSize: 15, top: 5}}>
+                Terminar compra
+              </Button>
+            </Link>
+          )}
         </div>
-
-      {initial && <h4>Ya tienes {initial} unidades</h4>}
-       
-
-      {showCounter ?  <div>
-          <CounterContainer
-            stock={productSelected.stock}
-            onAdd={onAdd}
-            initial={initial}
-          />
-        </div> :  <Link to="/cart">Terminar compra</Link>}
-
-     
-
-     
-      {/* Agrega más categorías y detalles según sea necesario */}
       </div>
     </section>
   );
 };
-
-

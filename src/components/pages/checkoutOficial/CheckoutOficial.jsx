@@ -1,12 +1,11 @@
 import { useContext, useState } from "react";
+import "./CheckoutStyles.css"; 
 import { CartContext } from "../../../context/CartContext";
-
 import { serverTimestamp } from "firebase/firestore";
-
 import { db } from "../../../firebaseConfig";
-
 import { collection, addDoc, updateDoc, doc } from "firebase/firestore";
 import { Link } from "react-router-dom";
+import { Button } from "@mui/material";
 
 const CheckoutOficial = () => {
   const [userData, setUserData] = useState({
@@ -49,33 +48,28 @@ const CheckoutOficial = () => {
   };
 
   return (
-    <>
+  <>
+      
       {orderId ? (
-        <div>
-          <h2>Gracias por su compra, su N° de comprobante es {orderId}</h2>
-          <Link to="/">Seguir comprando</Link>
-        </div>
-      ) : (
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Ingresa tu nombre"
-            name="name"
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            placeholder="Ingresa tu telefono"
-            name="phone"
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            placeholder="Ingresa tu email"
-            name="email"
-            onChange={handleChange}
-          />
-          <button type="submit">Comprar</button>
+        <section className="thank-you-message"> 
+          <Link to="/" className="continue-shopping-link"> 
+          <Button variant="contained" sx={{top: 45, left: 100}}>Seguir comprando</Button>
+          </Link> 
+          <h1>Gracias por su compra, su N° de comprobante es {orderId}</h1>
+        </section>
+        
+        )  : (
+          
+          <form className="form-container" onSubmit={handleSubmit}>
+
+          <input type="text" className="form-input" placeholder="Ingresa tu nombre" name="name" onChange={handleChange}/>
+
+          <input type="text" className="form-input" placeholder="Ingresa tu telefono" name="phone" onChange={handleChange}/>
+
+          <input type="text" className="form-input" placeholder="Ingresa tu email" name="email" onChange={handleChange}/>
+
+          <button type="submit" className="submit-button">Comprar</button> 
+
         </form>
       )}
     </>

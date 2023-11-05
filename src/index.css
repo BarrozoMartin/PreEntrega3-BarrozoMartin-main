@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+h1, h2, h4, h3 {
+  color: #fff;
+}
+
 
 h1, p, a, ul, li {
   margin: 0;
@@ -57,10 +61,23 @@ section {
   position: absolute;
   display: grid;
   width: 76%;
+  height: auto;
   top: 0;
   margin-left: 24%;
   padding: 1rem;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem; 
   justify-content: center; 
+}
+
+h4 {
+  right: 46%;
+  font-size: 40px;
+}
+
+.mrBotones{
+  position: absolute;
+  display: flex;
+  bottom: 4%;
+  left: 41.5%;
 }

@@ -2,7 +2,7 @@
   color: #FFF;
   font-size: 25px;
   margin: 5px;
-  
+  width: 33.5rem;
 }
 
 img {
@@ -11,20 +11,24 @@ img {
   border-radius: 25px;
 }
 
-.indumentaria {
-  width: 20rem;
-}
-
-.btnAdd {
+.btnComprar {
+  margin-bottom: 2.5rem;
   font-size: 1rem;
   color: #FFF;
   width: 8rem;
   height: 4rem;
-  background-color: transparent;
-  border-radius: 10px;
+  background-color: #1976D2;
+  border-radius: 3px;
+  box-shadow: 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .btnComprar:hover {
-  background-color: rgb(115, 181, 189);
+  background-color: #1565C0;
   color: #FFF;
 }
+
+.itemContainer{
+  margin-top: 1rem;
+  margin-right: 10rem;
+}
+

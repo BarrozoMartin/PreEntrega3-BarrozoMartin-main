@@ -16,10 +16,8 @@ const ItemDetailContainer = () => {
 
   let totalQuantity = getQuantityById(id);
 
-
   useEffect(() => {
     let itemCollection = collection(db, "products");
-
     let refDoc = doc(itemCollection, id);
 
     getDoc(refDoc).then((res) => {
@@ -28,22 +26,32 @@ const ItemDetailContainer = () => {
   }, [id]);
 
   const onAdd = (cantidad) => {
-    let item = {
-      ...productSelected,
-      quantity: cantidad,
-    };
+    if (cantidad > 0 && cantidad <= productSelected.stock) {
+      let item = {
+        ...productSelected,
+        quantity: cantidad,
+      };
 
-    addToCart(item);
+      addToCart(item);
 
-    Swal.fire({
-      position: "center",
-      icon: "success",
-      title: "Producto agregado al carrito",
-      showConfirmButton: false,
-      timer: 1500,
-    });
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Producto agregado al carrito",
+        showConfirmButton: false,
+        timer: 1500,
+      });
 
-    setShowCounter(false);
+      setShowCounter(false);
+    } else {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "La cantidad no es válida",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
   };
 
   return (

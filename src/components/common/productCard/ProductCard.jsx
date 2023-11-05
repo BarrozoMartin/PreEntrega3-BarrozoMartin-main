@@ -34,7 +34,7 @@ const ProductCard = ({ item }) => {
             <Button sx={{ mt: 18 , width: 1 }} size="large" variant="outlined">
               Ver detalle
             </Button>
-            </Link> : <Button variant="contained" disabled>Sin stock</Button>
+            </Link> : <Button variant="contained" disabled sx={{ mt: 18 , width: 1 }} size="large" >Sin stock</Button>
         }
       </CardActions>
     </Card>

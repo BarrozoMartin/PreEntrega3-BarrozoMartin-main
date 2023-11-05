@@ -1,3 +1,12 @@
-h1 {
-    color: #fff;
-}
+  .imgCart {
+    max-width: 200px;
+    max-height: 200px;
+  }
+
+  .btnCart {
+    margin: 20px;
+  }
+
+  .infoCart button {
+   margin: 2px;
+  }
