@@ -14,7 +14,7 @@ Bienvenido a BUHONERO, un proyecto de e-commerce desarrollado con ReactJS + Vite
 
 
 ## Captura de pantalla
-![BUHONERO](src\components\assets\img\buhoneroicon.png)
+![BUHONERO](https://res.cloudinary.com/dob2vpzui/image/upload/v1699495295/ozwof7skiftohmhtyvwr.png)
 
 ## Configuración del proyecto
 1. Clona el repositorio de BUHONERO en tu máquina local:
